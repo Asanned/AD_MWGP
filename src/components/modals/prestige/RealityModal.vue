@@ -82,6 +82,7 @@ export default {
   created() {
     this.getGlyphs();
     GlyphSelection.realityProps = getRealityProps(false, false);
+	
   },
   methods: {
     update() {
@@ -105,6 +106,7 @@ export default {
         if (currentGlyph.level === newGlyph.level) continue;
         currentGlyph.level = newGlyph.level;
         currentGlyph.effects = newGlyph.effects;
+
       }
       this.bestLevel = player.records.bestReality.glyphLevel;
       this.levelDifference = Math.abs(this.bestLevel - this.level);
@@ -167,6 +169,16 @@ export default {
         :show-sacrifice="canSacrifice"
         @click.native="select(index)"
       />
+    </div>
+	<div
+      v-if="!firstReality"
+      class="l-glyph-selection__row"
+    >
+      <PrimaryButton
+	  class="l-glyph-equip-button"
+        v-for="(glyph, index) in glyphs"
+        @click.native="select(index)"
+      >Select glyph n°{{index+1}}</PrimaryButton>
     </div>
     <div v-if="!firstReality">
       {{ levelStats }}
