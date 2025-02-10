@@ -278,6 +278,7 @@ export function gainedInfinities() {
     TimeStudy(32),
     RealityUpgrade(5),
     RealityUpgrade(7),
+    Achievement(131).effects.infinitiesGain,
     Achievement(164),
     Ra.unlocks.continuousTTBoost.effects.infinity
   );
@@ -466,7 +467,7 @@ export function gameLoop(passDiff, options = {}) {
   } else if (!Enslaved.isReleaseTick) {
     Enslaved.nextTickDiff = realDiff;
   }
-  if (diff === undefined) {
+  if (Enslaved.isReleaseTick || diff === undefined) {
     diff = Enslaved.nextTickDiff;
   }
 
